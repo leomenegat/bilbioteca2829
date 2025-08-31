@@ -1,0 +1,33 @@
+CREATE DATABASE BibliotecaDB;
+GO
+USE BibliotecaDB;
+
+CREATE TABLE Autores (
+    IdAutor INT PRIMARY KEY IDENTITY,
+    Nome VARCHAR(100),
+    Nacionalidade VARCHAR(50)
+);
+
+CREATE TABLE Livros (
+    IdLivro INT PRIMARY KEY IDENTITY,
+    Titulo VARCHAR(100),
+    Genero VARCHAR(50),
+    AnoPublicacao INT,
+    IdAutor INT FOREIGN KEY REFERENCES Autores(IdAutor)
+);
+
+CREATE TABLE Usuarios (
+    IdUsuario INT PRIMARY KEY IDENTITY,
+    Nome VARCHAR(100),
+    CPF VARCHAR(11),
+    Email VARCHAR(100)
+);
+
+CREATE TABLE Emprestimos (
+    IdEmprestimo INT PRIMARY KEY IDENTITY,
+    IdUsuario INT FOREIGN KEY REFERENCES Usuarios(IdUsuario),
+    IdLivro INT FOREIGN KEY REFERENCES Livros(IdLivro),
+    DataEmprestimo DATETIME,
+    DataDevolucao DATETIME NULL,
+    Status VARCHAR(20)
+);
