@@ -31,3 +31,5 @@ CREATE TABLE Emprestimos (
     DataDevolucao DATETIME NULL,
     Status VARCHAR(20)
 );
+
+dotnet add package Microsoft.Data.SqlClient
